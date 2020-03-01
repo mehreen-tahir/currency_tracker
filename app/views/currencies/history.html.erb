@@ -1,0 +1,38 @@
+<% if @history_list.blank? %>
+  <div class="alert alert-secondary" role="alert">
+    No History Captured Yet!
+  </div>
+<% else %>
+  <h6 class="display-8 text-center"><%= "History For #{params[:currency].upcase}" %></h6>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Time</th>
+          <th scope="col">Bid</th>
+          <th scope="col">Ask</th>
+          <th scope="col">Last</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @history_list.each do |history| %>
+          <tr>
+            <td>
+              <%= datetime_wrapper(history.time) %>
+            </td>
+            <td>
+              <%= big_decimal_converter(history.bid) %>
+            </td>
+            <td>
+              <%= big_decimal_converter(history.ask) %>
+            </td>
+            <td>
+              <%= big_decimal_converter(history.last) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
+

@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'listing', :to => 'currencies#index'
+  get 'history/:currency', :to => 'currencies#history', as: 'history', constraints: lambda { |request| History.currencies.keys.include?(request.params[:currency]) }
+
+  post 'capture', :to => 'currencies#capture'
+  root to: "currencies#index"
 end

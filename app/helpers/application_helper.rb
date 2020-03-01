@@ -10,4 +10,7 @@ module ApplicationHelper
     "alert #{klass_name} alert-dismissible fade show"
   end
 
+  def datetime_wrapper(datetime)
+    datetime.strftime("%A - %d %B %Y at %I:%M:%S %p") rescue nil
+  end
 end

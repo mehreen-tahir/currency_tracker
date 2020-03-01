@@ -1,0 +1,23 @@
+<div class="card text-center">
+  <div class="card-header text-uppercase">
+    <%= "#{currency_type} Rate" %>
+  </div>
+  <div class="card-body">
+    <h6 class="card-title">
+      <%= "Price At: #{datetime_wrapper(DateTime.parse(currency['current_time']))}" if currency['current_time'].present? %>
+    </h6>
+    <% currency.except('current_time').each do |key, value| %>
+      <p class="card-text">
+        <span class="font-weight-bold">
+          <%= "#{key.titleize} Price: " %>
+        </span>
+        <span class="font-weight-normal">
+          <%= value %>
+        </span>
+      </p>
+    <% end %>
+  </div>
+  <div class="card-footer text-muted">
+    <%= link_to "History", history_path(currency: currency_type.to_s), class: 'btn btn-outline-primary btn-lg btn-block' %>
+  </div>
+</div>
