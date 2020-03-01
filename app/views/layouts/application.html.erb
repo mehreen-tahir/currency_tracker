@@ -10,6 +10,12 @@
   </head>
 
   <body>
+  <%= render "shared/nav" %>
+  <div class="container">
+    <div class="flash-message">
+      <%= render "shared/flash_messages" %>
+    </div>
     <%= yield %>
+  </div>
   </body>
 </html>
