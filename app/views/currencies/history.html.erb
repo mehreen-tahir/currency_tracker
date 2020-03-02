@@ -4,5 +4,6 @@
   </div>
 <% else %>
   <h6 class="display-8 text-center"><%= "History For #{params[:currency].upcase}" %></h6>
+  <%= render partial: "chart", locals: { currency: @chart_data, currency_type: params[:currency].upcaseg } %>
   <%= render partial: "listing", locals: { history_list: @history_list } %>
 <% end %>

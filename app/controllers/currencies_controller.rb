@@ -5,7 +5,9 @@ class CurrenciesController < ApplicationController
   end
 
   def history
-    @history_list = History.public_send("#{params[:currency]}_currency").ordered_by_time
+    history = History.public_send("#{params[:currency]}_currency")
+    @history_list = history.ordered_by_time
+    @chart_data = history.group("DATE(time)").maximum('last')
   end
 
   def capture

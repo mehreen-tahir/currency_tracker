@@ -1,0 +1,8 @@
+<div class="card text-center mb-5">
+  <div class="card-header text-uppercase">
+    <%= "Historical Per Day Chart For Maximum #{currency_type} Currency" %>
+  </div>
+  <div class="card-body">
+    <%= area_chart @chart_data, ytitle: "#{currency_type} Last Currency Rate", xtitle: "Date" %>
+  </div>
+</div>
